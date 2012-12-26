@@ -1,0 +1,11 @@
+environment: development
+address: 127.0.0.1
+port: 6006
+servers: 1
+pid: tmp/allisdown.pid
+rackup: conf/config.ru
+log: log/thin.log
+max_conns: 1024
+timeout: 30
+max_persistent_conns: 256
+daemonize: true

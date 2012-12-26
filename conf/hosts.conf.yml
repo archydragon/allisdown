@@ -1,0 +1,32 @@
+Yandex:
+  type: http
+  host: yandex.ru
+  port: 80
+  description: Yandex.ru main webpage
+  timeout: 120
+
+Localhost:
+  type: http
+  host: 127.0.0.1
+  description: Home, sweet Home
+  timeout: 60
+
+GithubSSL:
+  type: https
+  host: github.com
+  description: Github SSL access
+  timeout: 60
+
+Pingoogle:
+  type: ping
+  iters: 5
+  host: google.com
+  description: Pingoogle
+  timeout: 30
+
+LocalhostSSH:
+  type: port
+  host: 127.0.0.1
+  port: 22
+  description: localhost SSH
+  timeout: 60

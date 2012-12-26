@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All is down!</title>
+  <style>
+    * {
+      font-family: mono;
+      font-size: 10pt;
+    }
+    h5 {
+      text-align: center;
+      font-weight: normal;
+    }
+    td {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+    .error {
+      color: #ff0000;
+    }
+    #header {
+      font-weight: bold;
+    }
+    .ok {
+      color: #00a000;
+    }
+    .fail {
+      color: #ff0000;
+    }
+  </style>
+</head>
+<body>
+  <h5>All is down! We are doomed!</h5>
+<% if @is_error %>
+  <span class="error"><%= @error %></span>
+<% else %>
+  <table>
+    <tr id="header">
+      <td>Hostname</td>
+      <td>Type</td>
+      <td>Status</td>
+      <td>Last checked</td>
+      <td>Upd.interval, s.</td>
+      <td>Description</td>
+    </tr>
+<% @frontdata.sort.map do |id, data| %>
+    <tr>
+      <td><%= data['host'] %><%= data.has_key?('port') ? ":#{data['port']}" : '' %></td>
+      <td><%= data['type'] %></td>
+      <td class="<%= data['status'] == 'OK' ? 'ok' : 'fail' %>"><%= data['status'] %></td>
+      <td><%= Time.at(data['lastcheck']) %></td>
+      <td><%= data['timeout'] %></td>
+      <td><%= data['description'] %></td>
+    </tr>
+<% end # frontend data processing %>
+  </table>
+<% end # else %>
+</body>
+</html>

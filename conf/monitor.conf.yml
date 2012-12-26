@@ -1,0 +1,5 @@
+statusfile: tmp/monitor.active
+mainlog: log/monitor.log
+timeout: 5
+hosts: conf/hosts.conf.yml
+frontend: tmp/data.yml
