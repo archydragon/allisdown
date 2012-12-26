@@ -8,6 +8,7 @@ System requirements
 -------------------
 
 **Linux** or other UNIX system (not tested, use at your own risc)
+
 **Ruby 1.8** or newer with installer **Rubygems**
 
 
@@ -57,12 +58,15 @@ Check_ID:                        # ID must be unique
 According to chosen check type, you may need to set additional parameters:
 
 * **http, https:**
+
   ``port: 80     # port for HTTP/HTTPS connection; optional; by defaults used 80 or 443 respectively``
 
 * **port**
+
   ``port: 22     # TCP port to check its availability; required``
   
 * **ping**
+
   ``iters: 5     # number of ICMP packets should be sent to remote host; required``
   
 ### Frontend
