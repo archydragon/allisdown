@@ -24,6 +24,8 @@ Running
 
 The script `runscript.sh` in the root directory of _allisdown_ used for execution management. Just run it with the parameter `start`, `stop`, `restart` or `kill` according to necessary action.
 
+The monitoring data is accessible by URL [http://127.0.0.1:6006/](http://127.0.0.1:6006/). Also there is XML data available at [http://127.0.0.1:6006/xml](http://127.0.0.1:6006/xml).
+
 
 Configuration
 -------------
