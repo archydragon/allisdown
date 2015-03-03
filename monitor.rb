@@ -55,8 +55,7 @@ class Monitor
   def self.config_load?
     if !File.exist?(@@CONFIG)
       self.gendata('error', "Unable load configuration file #{@@CONFIG}")
-      false
-      break
+      return false
     end
     config = YAML.load_file(@@CONFIG)
     # ====== data read — start ======
@@ -125,8 +124,7 @@ class Monitor
   def self.hosts_load?
     if !File.exist?(@@HOSTS)
       self.gendata('error', "Unable load hosts' configuration from #{@@HOSTS}")
-      false
-      break
+      return false
     end
     @@HOSTDATA = YAML.load_file(@@HOSTS)
     # validate received configuration
