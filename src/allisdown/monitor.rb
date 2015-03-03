@@ -6,8 +6,8 @@
 require 'yaml'
 require 'date'
 require 'fileutils'
-require './check.rb'     # source of the module Check
-require './validate.rb'  # source of the module Validate
+require 'check.rb'     # source of the module Check
+require 'validate.rb'  # source of the module Validate
 
 ############   HERE BE DRAGONS   ############
 

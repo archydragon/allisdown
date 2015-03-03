@@ -1,5 +1,5 @@
-require './allisdown.rb'
-require './monitor.rb'
+require './src/allisdown.rb'
+require './src/allisdown/monitor.rb'
 
 run Sinatra::Application
 

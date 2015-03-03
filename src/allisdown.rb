@@ -8,7 +8,11 @@ require 'sinatra'
 require 'thin'
 require 'erb'
 require 'active_support/core_ext/hash/conversions'
-require './monitor.rb'  # backend script
+
+$LOAD_PATH.unshift("#{File.dirname(__FILE__)}/allisdown")
+require 'monitor.rb'  # backend script
+
+set :views, "#{File.dirname(__FILE__)}/../views"
 
 ### A bit of backend
 
