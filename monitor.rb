@@ -1,9 +1,7 @@
 #!/usr/bin/env ruby -wKU
 # encoding: utf-8
 
-# # # allisdown/monitor.rb
 # # # Main class for monitoring module
-# # # Last updated: 2012-12-26, Mendor (for the details see changelog and git commit history)
 
 require 'yaml'
 require 'date'

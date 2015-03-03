@@ -1,9 +1,7 @@
 #!/usr/bin/env ruby -wKU
 # encoding: utf-8
 
-# # # allisdown/validate.rb
 # # # Simple validator for config parameters
-# # # Last updated: 2012-12-26, Mendor (for the details see changelog and git commit history)
 
 module Validate
 

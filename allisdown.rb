@@ -1,9 +1,7 @@
 #!/usr/bin/env ruby -wKU
 # encoding: utf-8
 
-# # # allisdown/allisdown.rb
 # # # Web-interface for monitoring system, based on Sinatra
-# # # Last updated: 2012-12-26, Mendor (for the details see changelog and git commit history)
 
 require 'rubygems'
 require 'sinatra'
