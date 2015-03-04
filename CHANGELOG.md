@@ -1,5 +1,6 @@
 **2015-03-04**
 - Added notifications support
+- Dockerized
 
 **2013-01-15**
 - Added XML output support

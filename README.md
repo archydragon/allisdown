@@ -75,7 +75,21 @@ According to chosen check type, you may need to set additional parameters:
   
 ### Frontend
 You may redesign a bit output page by editing `views/index.erb` template. It is easy.
-  
+
+Using with Docker
+-----------------
+
+On your Docker host (using root account):
+```shell
+git clone http://github.com/Mendor/allisdown.git
+cd allisdown
+cp -r conf /etc/allisdown
+vim /etc/allisdown/hosts.conf.yml
+docker build -t allisdown .
+docker run -d -i -p 6006:6006 -v /etc/allisdown:/opt/allisdown/conf --restart=always -t allisdown
+```
+
+And check did it run correctly using ``curl http://localhost:6006/``.  
 
 License
 -------
