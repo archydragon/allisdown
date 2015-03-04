@@ -1,7 +1,7 @@
 All is down!
 ============
 
-Minimalistic monitoring system with web output. Can check remote hosts availability via HTTP, HTTPS, ICMP echo request or TCP port connection. May be used as status page for some web- or related services.
+Minimalistic monitoring system with web output. Can check remote hosts availability via HTTP, HTTPS, ICMP echo request or TCP port connection. May be used as status page for some web- or related services. Also can send notifications in case of some service become unavailable.
 
 
 System requirements
@@ -42,6 +42,7 @@ Configuration data for monitoring system is being read from the file `monitor.co
 * _timeout_ — timeout between attempts to re-run checks (default value: `5`); be aware that every host should have its own re-check timeout, it's mentioned onward
 * _hosts_ — monitored hosts configuration file (default value: `conf/hosts.conf.yml`)
 * _frontend_ — output file used to generate frontend content (default value: `tmp/data.yml`)
+* _notifications_ – block for settings for notifications via external services e.g. email or HTTP API; the suboption `default` means global notifications activity, don't forget to set notifications method with appropriate options for it
 
 In case you need to re-locate main configuration file, you should also update `allisdown.rb` and `monitor.rb` with the new configuration location.
 
@@ -55,6 +56,7 @@ Check_ID:                        # ID must be unique
   host: hostname_or_ip           # valid hostname or IP; required
   timeout: 60                    # timeout between this host's checks; fixed number; required
   description: any text          # used only for explanations at frontend; optional
+  notifications: on              # override global notification activity for the specific host; yes/no; optional
 ```
 
 According to chosen check type, you may need to set additional parameters:

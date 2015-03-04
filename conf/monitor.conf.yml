@@ -7,17 +7,19 @@ notifications:
   default: on
   method: sendmail
   from: inori@i.know.everything
-  target: mendor@nomanga.net
-  # ---- alternative notification methods with config samples ----
-  # * SMTP
+  target: admin@yuuzukiyo.net
+  # # ---- alternative notification methods with config samples ----
+  # # * SMTP
   # method: smtp
   # from: inori@i.know.everything
+  # target: admin@yuuzukiyo.net
   # smtp_server: mail.yuuzukiyo.net
   # smtp_user: inori
   # smtp_password: p@ssw0rd
   # smtp_port: 465
   # smtp_ssl: true
-  # * HTTP POST query
+  # # HTTP POST query
+  # # the '#' character inside the string marks the place for the notification body
   # method: post
   # url: http://someapi.com/post
   # field: data
