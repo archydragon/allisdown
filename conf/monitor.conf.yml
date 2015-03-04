@@ -3,3 +3,22 @@ mainlog: log/monitor.log
 timeout: 5
 hosts: conf/hosts.conf.yml
 frontend: tmp/data.yml
+notifications:
+  default: on
+  method: sendmail
+  from: inori@i.know.everything
+  target: mendor@nomanga.net
+  # ---- alternative notification methods with config samples ----
+  # * SMTP
+  # method: smtp
+  # from: inori@i.know.everything
+  # smtp_server: mail.yuuzukiyo.net
+  # smtp_user: inori
+  # smtp_password: p@ssw0rd
+  # smtp_port: 465
+  # smtp_ssl: true
+  # * HTTP POST query
+  # method: post
+  # url: http://someapi.com/post
+  # field: data
+  # format: '{"type": "message", "body": "#"}'

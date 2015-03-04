@@ -6,8 +6,11 @@
 require 'yaml'
 require 'date'
 require 'fileutils'
+
+$LOAD_PATH.unshift("#{File.dirname(__FILE__)}")
 require 'check.rb'     # source of the module Check
 require 'validate.rb'  # source of the module Validate
+require 'notify.rb'    # notifications class
 
 ############   HERE BE DRAGONS   ############
 
@@ -19,6 +22,7 @@ class Monitor
   @@HOSTS      = 'conf/hosts.conf.yml'    # file with hosts configuration
   @@TIMEOUT    = 5                        # timeout between check attempts iterations
   @@STATUSFILE = 'tmp/monitor.active'     # lock-file showing monitoring activity
+  @@NOTIFY     = {'default' => 'off'}     # default settings for notifications
   # hosts data
   @@HOSTDATA   = ''
   @@TOTAL      = 0
@@ -62,6 +66,7 @@ class Monitor
     @@HOSTS      = config['hosts']
     @@MAINLOG    = config['mainlog']
     @@TIMEOUT    = config['timeout']
+    @@NOTIFY     = config['notifications']
     # ====== data read — end ======
     self.log("Loaded configuration file #{@@CONFIG}")
     true
@@ -174,7 +179,19 @@ class Monitor
         if now - lastcheck > host[1]['timeout']
           checked = self.check(host[1])  # check result
           # log event if host status has been changed
-          self.log("UPDATE: #{host[0]}: #{checked}") if host[1]['status'] != checked
+          if host[1]['status'] != checked
+            self.log("UPDATE: #{host[0]}: #{checked}")
+            host_notifications = host[1]['notifications'] || 'off'
+            if @@NOTIFY['default'] or host_notifications == 'on'
+              n = Notify.new(@@NOTIFY)
+              n.send(@@NOTIFY['method'], {
+                "item" => host[0],
+                "host" => host[1]['host'],
+                "status" => checked,
+                "timestamp" => now
+              })
+            end
+          end
           host[1]['status'] = checked
           host[1]['lastcheck'] = now
         end
@@ -202,6 +219,8 @@ class Monitor
       FileUtils.touch(@@STATUSFILE)
       self.log("Monitoring process started")
       self.watch!
+    else
+      self.log("Failed to start monitoring")
     end
   end
 

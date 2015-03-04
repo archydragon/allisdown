@@ -17,9 +17,9 @@ set :views, "#{File.dirname(__FILE__)}/../views"
 ### A bit of backend
 
 # we need to try to start monitoring process
-Thread.new { 
+Thread.new do
   Monitor.start!
-}
+end
 
 ### Helpers for frontend
 helpers do
@@ -84,3 +84,4 @@ get '/restart' do
   Monitor.start!
   redirect to('/')
 end
+

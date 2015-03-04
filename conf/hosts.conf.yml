@@ -22,6 +22,7 @@ Pingoogle:
   iters: 5
   host: google.com
   description: Pingoogle
+  notifications: off
   timeout: 30
 
 LocalhostSSH:
