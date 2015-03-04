@@ -183,13 +183,15 @@ class Monitor
             self.log("UPDATE: #{host[0]}: #{checked}")
             host_notifications = host[1]['notifications'] || 'off'
             if @@NOTIFY['default'] or host_notifications == 'on'
-              n = Notify.new(@@NOTIFY)
-              n.send(@@NOTIFY['method'], {
-                "item" => host[0],
-                "host" => host[1]['host'],
-                "status" => checked,
-                "timestamp" => now
-              })
+              unless checked == 'OK' and @@NOTIFY['send_ok']
+                n = Notify.new(@@NOTIFY)
+                n.send(@@NOTIFY['method'], {
+                  "item" => host[0],
+                  "host" => host[1]['host'],
+                  "status" => checked,
+                  "timestamp" => now
+                })
+              end
             end
           end
           host[1]['status'] = checked

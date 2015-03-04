@@ -5,6 +5,7 @@ hosts: conf/hosts.conf.yml
 frontend: tmp/data.yml
 notifications:
   default: on
+  send_ok: true
   method: sendmail
   from: inori@i.know.everything
   target: admin@yuuzukiyo.net
